@@ -1,5 +1,9 @@
 import React from "react";
+
+// CSS
 import "./App.css";
+
+// Component
 import ListComponent from "./components/ListComponent/ListComponent";
 
 const App: React.FC = () => {

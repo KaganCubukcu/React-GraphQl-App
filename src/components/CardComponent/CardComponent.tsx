@@ -1,7 +1,12 @@
 import React from "react";
+
+// Type
 import { Country } from "../../types/Country";
+
+// Css
 import "./CardComponent.css";
 
+// Interface
 interface CardComponentProps {
   country: Country;
   onClick: () => void;
@@ -13,6 +18,7 @@ const CardComponent: React.FC<CardComponentProps> = ({
   onClick,
   selected,
 }) => {
+  // Color Palette
   const colors = [
     "#6096B4",
     "#93BFCF",

@@ -1,6 +1,9 @@
 import React from "react";
+
+// Css
 import "./FilterComponent.css";
 
+// Type
 interface FilterComponentProps {
   onFilterChange: (filter: string) => void;
 }

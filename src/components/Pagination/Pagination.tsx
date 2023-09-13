@@ -1,7 +1,12 @@
 import React from "react";
+
+// Import Interface
 import { Country } from "../../types/Country";
+
+// CSS
 import "./Pagination.css";
 
+// Type
 type PaginationProps = {
   countries: Country[];
   currentPage: number;
