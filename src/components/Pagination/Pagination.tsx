@@ -3,7 +3,7 @@ import { Country } from "../../types/Country";
 import "./Pagination.css";
 
 type PaginationProps = {
-  countries: Country[]; // Use the appropriate type (Country[]) instead of 'any[]'
+  countries: Country[];
   currentPage: number;
   onPageChange: (page: number) => void;
 };
@@ -18,7 +18,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const numPages = Math.ceil(countries.length / ITEMS_PER_PAGE);
   const pageNumbers = [];
 
-  // Mevcut sayfanın etrafındaki sayfa numaralarını göster
+  // Show the page numbers around the current page
   for (
     let i = Math.max(1, currentPage - 2);
     i <= Math.min(numPages, currentPage + 2);

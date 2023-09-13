@@ -1,4 +1,3 @@
-// FilterComponent.tsx
 import React from "react";
 import "./FilterComponent.css";
 

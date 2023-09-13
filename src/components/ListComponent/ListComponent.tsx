@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { gql, useQuery } from "@apollo/client";
+
+//Components
 import CardComponent from "../CardComponent/CardComponent";
 import Button from "../ButtonComponent/ButtonComponent";
-import { Country } from "../../types/Country";
 import FilterComponent from "../FilterComponent/FilterComponent";
 import Pagination from "../Pagination/Pagination";
 import "./ListComponent.css";
+
+//Type
+import { Country } from "../../types/Country";
+
+//Query
 const LIST_COUNTRIES = gql`
   query GetAllCountries {
     countries {
@@ -25,17 +31,17 @@ const LIST_COUNTRIES = gql`
 const ITEMS_PER_PAGE = 10;
 
 const ListComponent: React.FC = () => {
-  // Apollo Client'ı kullanarak verileri alır
+  // Data from Apollo Client
   const { data, loading, error } = useQuery(LIST_COUNTRIES, {
     notifyOnNetworkStatusChange: true,
   });
 
-  // State değişkenlerini tanımlar
+  // States
   const [currentPage, setCurrentPage] = useState(1);
   const [filter, setFilter] = useState("");
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
-  // Ülkeleri filtreler ve sayfalara ayırır
+  // Filters and separates countries into pages
   const countries = data ? data.countries : [];
   const indexOfLastCountry = currentPage * ITEMS_PER_PAGE;
   const indexOfFirstCountry = indexOfLastCountry - ITEMS_PER_PAGE;
@@ -45,7 +51,7 @@ const ListComponent: React.FC = () => {
     )
     .slice(indexOfFirstCountry, indexOfLastCountry);
 
-  // Veriler geldiğinde otomatik olarak bir ülke seçer
+  // Automatically selects a country when the data arrives
   useEffect(() => {
     if (data && data.countries.length > 0) {
       const indexToSelect = Math.min(9, data.countries.length - 1);
@@ -53,14 +59,14 @@ const ListComponent: React.FC = () => {
     }
   }, [data]);
 
-  // Sayfa değiştiğinde otomatik olarak son öğeyi seçer
+  // Automatically selects the last item when the page changes
   useEffect(() => {
     if (currentCountries.length > 0) {
       setSelectedCountry(currentCountries[currentCountries.length - 1]);
     }
   }, [currentPage]);
 
-  // Filtre değiştiğinde otomatik olarak bir ülke seçer
+  // Automatically selects a country when the filter changes
   const handleFilterChange = (newFilter: string) => {
     setFilter(newFilter);
     if (currentCountries.length > 0) {
@@ -71,21 +77,20 @@ const ListComponent: React.FC = () => {
     }
   };
 
-  // Ülke tıklandığında seçili ülkeyi günceller
+  // Updates the selected country when the country is clicked
   const handleCountryClick = (country: Country) => {
     setSelectedCountry(country);
   };
 
-  // Filtrelenmiş ülkeleri hesaplar
+  // Filtered countries
   const filteredCountries = countries.filter((country: Country) =>
     country.name.toLowerCase().includes(filter.toLowerCase())
   );
 
-  // Yükleniyor veya hata durumlarını kontrol eder
+  // Checks loading or error conditions
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  // ListComponent bileşenini döndürür
   return (
     <div className="list">
       <FilterComponent onFilterChange={handleFilterChange} />
@@ -127,5 +132,4 @@ const ListComponent: React.FC = () => {
   );
 };
 
-// ListComponent bileşenini dışa aktarır
 export default ListComponent;
