@@ -13,7 +13,16 @@ const CardComponent: React.FC<CardComponentProps> = ({
   onClick,
   selected,
 }) => {
-  const colors = ["red", "blue", "green", "yellow", "purple"];
+  const colors = [
+    "#6096B4",
+    "#93BFCF",
+    "#525E75",
+    "#93C6E7",
+    "#A7727D",
+    "#FD8A8A",
+    "#554994",
+    "#354259",
+  ];
   const color = colors[Math.floor(Math.random() * colors.length)];
 
   return (
