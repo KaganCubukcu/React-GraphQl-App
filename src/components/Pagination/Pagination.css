@@ -1,0 +1,9 @@
+.pagination-container {
+  width: 100%;
+}
+
+@media (min-width: 1280px) {
+  .pagination-container {
+    width: 1280px;
+  }
+}
