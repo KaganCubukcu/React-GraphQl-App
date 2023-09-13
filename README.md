@@ -1,27 +1,15 @@
-# React + TypeScript + Vite
+# React + TypeScript + GraphQL + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Features
 
-Currently, two official plugins are available:
+- This project was created on the React Vite template, data was obtained via the GraphQL API using TypeScript and GraphQL and completed by displaying the data through components.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- The data in the project represents the countries and information about these countries.
 
-## Expanding the ESLint configuration
+- With the filtering process, the desired countries can be searched.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- With the pagination process, 10 items of data are set to fall on each page. In addition, the background color of the last item of each page is different and comes automatically when selected.
 
-- Configure the top-level `parserOptions` property like this:
+- During the selection of different items on the page, the background color changes and becomes different from the background color selected after it.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Responsive
